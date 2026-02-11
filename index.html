@@ -1,72 +1,152 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Invitation</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px;
-        }
-        header {
-            background: #35424a;
-            color: #ffffff;
-            padding: 20px 0;
-            text-align: center;
-        }
-        h1 {
-            margin: 0;
-        }
-        section {
-            margin: 20px 0;
-            padding: 10px;
-            background: #ffffff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            margin-top: 20px;
-            background: #35424a;
-            color: #ffffff;
-        }
-    </style>
+    <title>Muh Syahril & Natasya - Pernikahan Kami</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>You're Invited to Our Wedding!</h1>
-    </header>
-    <div class="container">
-        <section>
-            <h2>Welcome!</h2>
-            <p>We are excited to announce that we will be tying the knot on </p>
-            <p><strong>June 15, 2026</strong>.</p>
-            <p>Join us in celebrating our love and commitment to each other.</p>
-        </section>
-        <section>
-            <h2>Details</h2>
-            <p><strong>Date:</strong> June 15, 2026</p>
-            <p><strong>Location:</strong> Sunset Beach Resort</p>
-            <p><strong>Time:</strong> 4:00 PM</p>
-        </section>
-        <section>
-            <h2>RSVP</h2>
-            <p>Please let us know if you can make it!</p>
-            <p>Contact us at: <a href="mailto:example@example.com">example@example.com</a></p>
-        </section>
-    </div>
-    <footer>
-        <p>We look forward to celebrating with you!</p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">💍 S & N</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Undangan</a></li>
+                <li><a href="pages/couple.html" class="nav-link">Pasangan</a></li>
+                <li><a href="pages/gallery.html" class="nav-link">Galeri</a></li>
+                <li><a href="pages/rsvp.html" class="nav-link rsvp-btn">RSVP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="decorative-top">✨ S & N ✨</div>
+            
+            <h1 class="groom-name animate-fade-in">Muh Syahril</h1>
+            <p class="ampersand">&</p>
+            <h2 class="bride-name animate-fade-in-delay">Natasya</h2>
+            
+            <p class="tagline">Dengan memohon rahmat dan ridha Allah SWT,<br>kami mengundang Anda merayakan momen terindah kami</p>
+            
+            <div class="save-date">
+                <p class="date-label">Senin, 17 Februari 2026</p>
+                <p class="time-label">Pukul 09:00 - Selesai</p>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="pages/rsvp.html" class="btn btn-primary">Konfirmasi Kehadiran</a>
+                <a href="#invitation-card" class="btn btn-secondary">Lihat Undangan</a>
+            </div>
+
+            <div class="scroll-indicator">
+                <p>Scroll untuk detail acara ↓</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Invitation Card Section -->
+    <section id="invitation-card" class="invitation-card">
+        <div class="container">
+            <div class="card-content">
+                <div class="card-header">
+                    <p class="card-bismillah">بِسْمِ اللّهِ الرَّحْمَٰن الرَّحِيم</p>
+                    <h2>Dengan Hormat,</h2>
+                </div>
+
+                <div class="card-body">
+                    <p class="card-text">Kami yang bertanda tangan di bawah ini dengan segala kerendahan hati mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami:</p>
+
+                    <div class="card-couple">
+                        <h3>Muh Syahril</h3>
+                        <p>Putra dari Harman & Hj. Baba</p>
+                    </div>
+
+                    <p class="card-with">Dengan</p>
+
+                    <div class="card-couple">
+                        <h3>Natasya</h3>
+                        <p>Putri dari [Nama Orang Tua Natasya]</p>
+                    </div>
+                </div>
+
+                <div class="card-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📅 Hari/Tanggal</span>
+                        <span class="detail-value">Senin, 17 Februari 2026</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🕐 Waktu</span>
+                        <span class="detail-value">Pukul 09:00 - Selesai</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">📍 Lokasi</span>
+                        <span class="detail-value">Pujo Bulucenrana<br>Kec. Pitu Riase, Kab Sidrap</span>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <p class="card-closing">Atas kehadiran dan doa restu Anda, kami mengucapkan terima kasih.</p>
+                    <p class="card-signature">Tertanda,</p>
+                    <p class="card-family">Keluarga Besar BANCOS FAMILY</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Details Section -->
+    <section id="details" class="event-details">
+        <div class="container">
+            <h2 class="section-title">Acara Kami</h2>
+            
+            <div class="timeline">
+                <!-- Akad Nikah -->
+                <div class="timeline-item left">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Akad Nikah</h3>
+                        <p class="event-time">🕐 09:00 - 10:00</p>
+                        <p class="event-location">📍 Pujo Bulucenrana, Kec. Pitu Riase, Kab Sidrap</p>
+                        <p class="event-description">Saksikan momen sakral akad nikah kami yang penuh berkah</p>
+                    </div>
+                </div>
+
+                <!-- Resepsi -->
+                <div class="timeline-item right">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Resepsi Pernikahan</h3>
+                        <p class="event-time">🕐 10:00 - 15:00</p>
+                        <p class="event-location">📍 Pujo Bulucenrana, Kec. Pitu Riase, Kab Sidrap</p>
+                        <p class="event-description">Merayakan kebahagiaan dengan acara resepsi yang meriah</p>
+                    </div>
+                </div>
+
+                <!-- Makan Malam -->
+                <div class="timeline-item left">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Makan Malam Bersama</h3>
+                        <p class="event-time">🕐 15:00 - Selesai</p>
+                        <p class="event-location">📍 Pujo Bulucenrana, Kec. Pitu Riase, Kab Sidrap</p>
+                        <p class="event-description">Santap hidangan istimewa dan nikmati kebersamaan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Muh Syahril & Natasya. All rights reserved.</p>
+            <p>Tertanda, Keluarga Besar BANCOS FAMILY 💕</p>
+        </div>
     </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>

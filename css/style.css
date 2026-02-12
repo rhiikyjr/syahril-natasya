@@ -944,7 +944,20 @@ h1, h2, h3 { font-weight: 400; }
         padding: 1rem;
     }
     
-    .name-block { font-size: 2.5rem; }
+    .name-block {
+        /* Mobile specific adjustments for name */
+        font-size: clamp(3rem, 15vw, 4.5rem) !important; /* Smaller range for mobile */
+        margin-left: -5% !important; /* Less offset on mobile */
+        margin-right: -5% !important; /* Less offset on mobile */
+    }
+    
+    .name-block:nth-child(3) {
+        margin-top: -0.2rem !important; /* Less overlap on mobile */
+    }
+    
+    .ampersand {
+        font-size: 1.5rem !important; /* Smaller ampersand */
+    }
 }
 
 @media (min-width: 768px) {

@@ -83,14 +83,14 @@ body::before {
     opacity: 0.8;
 }
 
-/* SVG Data URI for Premium Batik Gold Floral Corner Ornament */
+/* SVG Data URI for Premium Abstract Gold Batik Corner Ornament */
 .fixed-frame {
-    --ornament: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none'%3E%3C!-- Batik/Floral Motif --%3E%3Cpath d='M10,10 Q60,10 110,10 C150,10 180,40 190,80' stroke='%23D4AF37' stroke-width='2' stroke-opacity='0.6' fill='none'/%3E%3Cpath d='M10,10 Q10,60 10,110 C10,150 40,180 80,190' stroke='%23D4AF37' stroke-width='2' stroke-opacity='0.6' fill='none'/%3E%3C!-- Leaf Details --%3E%3Cpath d='M10,10 C40,20 60,40 80,80 C70,90 50,80 40,60 C30,40 20,30 10,10 Z' fill='%23D4AF37' fill-opacity='0.8'/%3E%3Cpath d='M10,10 C20,40 40,60 80,80 C90,70 80,50 60,40 C40,30 30,20 10,10 Z' fill='%23D4AF37' fill-opacity='0.8'/%3E%3C!-- Flower Bud --%3E%3Ccircle cx='10' cy='10' r='5' fill='%23F3E5AB' filter='drop-shadow(0 0 2px %23D4AF37)'/%3E%3C!-- Extra Swirls --%3E%3Cpath d='M110,10 Q140,10 160,30' stroke='%23D4AF37' stroke-width='1' fill='none'/%3E%3Cpath d='M10,110 Q10,140 30,160' stroke='%23D4AF37' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+    --ornament: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3C!-- Abstract Batik Swirls --%3E%3Cpath d='M5,5 Q30,5 50,25 T95,50' stroke='%23D4AF37' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M5,5 Q5,30 25,50 T50,95' stroke='%23D4AF37' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M25,25 Q40,10 60,25 T80,50' stroke='%23D4AF37' stroke-width='1' fill='none' opacity='0.7'/%3E%3Cpath d='M25,25 Q10,40 25,60 T50,80' stroke='%23D4AF37' stroke-width='1' fill='none' opacity='0.7'/%3E%3C!-- Gold Dots/Accents --%3E%3Ccircle cx='5' cy='5' r='3' fill='%23F3E5AB'/%3E%3Ccircle cx='50' cy='25' r='2' fill='%23D4AF37'/%3E%3Ccircle cx='25' cy='50' r='2' fill='%23D4AF37'/%3E%3Ccircle cx='95' cy='50' r='1.5' fill='%23D4AF37' opacity='0.8'/%3E%3Ccircle cx='50' cy='95' r='1.5' fill='%23D4AF37' opacity='0.8'/%3E%3C/svg%3E");
 }
 
 .fixed-frame::before {
     top: 15px; left: 15px;
-    width: 150px; height: 150px;
+    width: 100px; height: 100px;
     background-image: var(--ornament);
     opacity: 1;
     animation: breathe 6s infinite alternate;
@@ -98,7 +98,7 @@ body::before {
 
 .fixed-frame::after {
     top: 15px; right: 15px;
-    width: 150px; height: 150px;
+    width: 100px; height: 100px;
     background-image: var(--ornament);
     transform: scaleX(-1);
     opacity: 1;
@@ -107,7 +107,7 @@ body::before {
 
 .frame-border::before {
     bottom: 0; left: 0;
-    width: 150px; height: 150px;
+    width: 100px; height: 100px;
     background-image: var(--ornament);
     transform: scaleY(-1);
     opacity: 1;
@@ -116,7 +116,7 @@ body::before {
 
 .frame-border::after {
     bottom: 0; right: 0;
-    width: 150px; height: 150px;
+    width: 100px; height: 100px;
     background-image: var(--ornament);
     transform: scale(-1);
     opacity: 1;

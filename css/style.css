@@ -232,10 +232,10 @@ h1, h2, h3 { font-weight: 400; }
     
     /* Use NO-BG photo for cleaner look on dark background */
     background-image: url('../images/mempelai-nobg.png');
-    background-size: auto 80%; /* Contain height to 80% */
+    background-size: auto 65%; /* Reduce size slightly to fit upper area */
     background-repeat: no-repeat;
-    /* Position image at bottom center of the whole screen */
-    background-position: center bottom; 
+    /* Position image at top center, with some padding from top */
+    background-position: center 10%; 
     filter: drop-shadow(0 0 20px rgba(0,0,0,0.5)); /* Add shadow for depth */
 }
 
@@ -244,8 +244,8 @@ h1, h2, h3 { font-weight: 400; }
     left: 0; 
     border-right: 1px solid rgba(212, 175, 55, 0.3); 
     /* Shift background to align as one image */
-    background-position: right bottom; 
-    background-size: 200% 80%; /* Double width because it's half screen */
+    background-position: right 10%; 
+    background-size: 200% 65%; /* Double width because it's half screen */
 }
 
 /* Right Curtain: Shows right half of the centered image */
@@ -253,8 +253,8 @@ h1, h2, h3 { font-weight: 400; }
     right: 0; 
     border-left: 1px solid rgba(212, 175, 55, 0.3); 
     /* Shift background to align as one image */
-    background-position: left bottom;
-    background-size: 200% 80%;
+    background-position: left 10%;
+    background-size: 200% 65%;
 }
 
 /* Open State */
@@ -263,7 +263,8 @@ h1, h2, h3 { font-weight: 400; }
 
 .opening-content {
     position: absolute; /* Changed to absolute for precise positioning */
-    top: 15%; /* Position at top area */
+    bottom: 10%; /* Position at bottom area */
+    top: auto; /* Clear top positioning */
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
@@ -275,11 +276,25 @@ h1, h2, h3 { font-weight: 400; }
     max-width: 400px;
     
     /* Glassmorphism */
-    background: rgba(5, 31, 24, 0.4); /* More transparent */
+    background: rgba(5, 31, 24, 0.6); /* More opaque for contrast against dark bottom */
     backdrop-filter: blur(8px);
     border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.3); /* Shadow upwards */
+}
+
+/* Ensure mobile layout is balanced */
+@media (max-width: 768px) {
+    .curtain, .curtain-left, .curtain-right {
+        background-size: auto 50%; /* Smaller image on mobile */
+        background-position: center 15%; /* Keep at top */
+    }
+    .curtain-left { background-position: right 15%; background-size: 200% 50%; }
+    .curtain-right { background-position: left 15%; background-size: 200% 50%; }
+    
+    .opening-content {
+        bottom: 5%; /* Lower on mobile */
+    }
 }
 
 .opening-layer.is-open .opening-content {

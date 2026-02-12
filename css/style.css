@@ -216,63 +216,56 @@ h1, h2, h3 { font-weight: 400; }
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    /* Add background image support */
     background-color: var(--c-emerald-deep);
+    transition: opacity 1.5s ease, visibility 1.5s;
+    opacity: 1;
+    visibility: visible;
+}
+
+.opening-layer.is-open {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .opening-cover-bg {
     position: absolute;
     inset: 0;
-    z-index: 0; /* Behind content but in front of background color */
-    opacity: 0.6; /* Increased visibility for background photo */
-    transition: opacity 1s ease;
+    z-index: 0;
+    opacity: 0.6;
 }
 
 .cover-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center; /* Center focus */
-    filter: grayscale(100%) contrast(1.1) brightness(0.6); /* Cinematic Dark B&W */
+    object-position: center;
+    filter: grayscale(100%) contrast(1.1) brightness(0.6);
 }
 
 .cover-overlay {
     position: absolute;
     inset: 0;
-    /* Gradient to ensure text readability in center */
     background: radial-gradient(circle at center, rgba(5,31,24,0.4) 0%, var(--c-emerald-deep) 90%);
 }
-
-.curtain {
-    position: absolute;
-    top: 0; height: 100%; width: 51%;
-    background-color: var(--c-emerald-deep);
-    z-index: 2; /* Increased z-index to cover image */
-    transition: transform 2.5s var(--ease-out-expo);
-}
-
-.curtain-left { left: 0; border-right: 1px solid rgba(212, 175, 55, 0.1); }
-.curtain-right { right: 0; border-left: 1px solid rgba(212, 175, 55, 0.1); }
-
-.opening-layer.is-open .curtain-left { transform: translateX(-100%); }
-.opening-layer.is-open .curtain-right { transform: translateX(100%); }
-.opening-layer.is-open .opening-cover-bg { opacity: 0; transition-delay: 0.5s; }
 
 .opening-content {
     position: relative;
     z-index: 10;
     text-align: center;
     padding: 2rem;
-    opacity: 1;
-    transition: opacity 1s ease;
     width: 100%;
     max-width: 500px;
-    /* Add backdrop for better text readability over image */
     background: rgba(5, 31, 24, 0.6);
     backdrop-filter: blur(5px);
     border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 16px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    transition: transform 1s ease;
+}
+
+.opening-layer.is-open .opening-content {
+    transform: scale(1.1); /* Subtle zoom out effect when opening */
 }
 
 .opening-layer.is-open {

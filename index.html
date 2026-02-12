@@ -15,9 +15,12 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Gold Border Frame -->
+    <!-- Decorative Border Frame (Fixed) -->
     <div class="fixed-frame">
-        <div class="frame-border"></div>
+        <div class="frame-border">
+            <div class="border-left"></div>
+            <div class="border-right"></div>
+        </div>
     </div>
 
     <!-- Ambient Background -->
@@ -59,7 +62,8 @@
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="hero-bg">
-                <!-- CSS Gradient Background (No Image) -->
+                <!-- Background Photo (Restored) -->
+                <img src="images/mempelai-bg.jpg" alt="Background" class="hero-img-bg" onerror="this.style.opacity='0'">
                 <div class="hero-overlay"></div>
             </div>
 
@@ -115,7 +119,7 @@
                 <!-- Bride -->
                 <div class="couple-block reveal-up">
                     <h2 class="couple-name">Natasya</h2>
-                    <p class="couple-parents">Putri dari Bapak & Ibu (Mempelai Wanita)</p>
+                    <p class="couple-parents">Putri dari Bapak Onding & Ibu Sukmawati</p>
                 </div>
                 <div class="divider-ornament reveal-up"></div>
             </div>
@@ -124,7 +128,8 @@
         <!-- Yang Mengundang Section (Harman & Hj Baba) -->
         <section class="inviter-section content-pad">
             <div class="inviter-bg">
-                <!-- CSS Gradient Background (No Image) -->
+                <!-- Background Photo for Parents (Restored) -->
+                <img src="images/parents-bg.jpg" alt="Parents Background" class="inviter-img-bg" onerror="this.style.opacity='0'">
                 <div class="inviter-overlay"></div>
             </div>
             
@@ -132,11 +137,10 @@
                 <h3 class="section-title reveal-up">Yang Mengundang</h3>
                 
                 <div class="inviter-content">
+                    <!-- Groom's Parents -->
                     <div class="inviter-photo-wrapper reveal-up">
-                        <!-- No-Background Photo for Parents -->
                          <img src="images/parents-nobg.png" alt="Harman & Hj Baba" class="inviter-img-nobg" onerror="this.style.display='none'">
                     </div>
-                    
                     <div class="inviter-names reveal-up delay-2">
                         <h2 class="parents-main-name">Harman & Hj. Baba</h2>
                         <p class="parents-role">Keluarga Mempelai Pria</p>
@@ -164,47 +168,30 @@
             </div>
         </section>
 
-        <!-- Gallery / Turut Mengundang -->
-        <section class="gallery-section content-pad">
-            <div class="container">
-                <h3 class="section-title reveal-up">Turut Mengundang</h3>
-                <p class="gallery-subtitle reveal-up">Keluarga Besar Bancos Family</p>
+        <!-- Closing Section -->
+        <section class="closing-section content-pad">
+            <div class="container relative z-10">
+                <!-- Removed 'Turut Mengundang' Section -->
                 
-                <div class="masonry-grid">
-                    <!-- Images will auto-hide if error -->
-                    <div class="grid-item reveal-up delay-1">
-                        <img src="images/turut-1.jpg" alt="Family" onerror="this.parentElement.style.display='none'">
-                    </div>
-                    <div class="grid-item reveal-up delay-2">
-                        <img src="images/turut-2.jpg" alt="Family" onerror="this.parentElement.style.display='none'">
-                    </div>
-                    <div class="grid-item reveal-up delay-3">
-                        <img src="images/turut-3.jpg" alt="Family" onerror="this.parentElement.style.display='none'">
-                    </div>
-                    <div class="grid-item reveal-up delay-4">
-                        <img src="images/turut-4.jpg" alt="Family" onerror="this.parentElement.style.display='none'">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Closing -->
-        <section class="closing-section">
-            <div class="closing-bg"></div>
-            <div class="container relative">
-                <p class="closing-text reveal-up">
-                    Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai.
+                <!-- Large Bancos Family Text -->
+                <h3 class="bancos-family-text reveal-up">Keluarga Besar<br>Bancos Family</h3>
+                
+                <p class="intro-text reveal-up delay-1" style="margin-top: 2rem;">
+                    Merupakan suatu kehormatan dan kebahagiaan bagi kami<br>
+                    apabila Bapak/Ibu/Saudara/i berkenan hadir<br>
+                    untuk memberikan doa restu kepada kedua mempelai.
                 </p>
-                <div class="signature reveal-up">
-                    <p>Kami yang berbahagia,</p>
-                    <h3 class="family-name">Keluarga Besar Bancos Family</h3>
+                
+                <h2 class="bismillah text-gold reveal-up delay-2" style="margin-top: 2rem;">Wassalamu'alaikum Wr. Wb.</h2>
+                
+                <h1 class="family-name reveal-up delay-3">Syahril & Natasya</h1>
+                
+                <!-- Footer -->
+                <div class="main-footer reveal-up delay-4">
+                    <p>Created with <span style="color: #D4AF37;">♥</span> by Rhiikyjr</p>
                 </div>
             </div>
         </section>
-
-        <footer class="main-footer">
-            <p>&copy; 2026 Muh Syahril & Natasya</p>
-        </footer>
 
     </main>
 

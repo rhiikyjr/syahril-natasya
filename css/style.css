@@ -30,10 +30,10 @@ body {
     background-color: var(--c-emerald-dark);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
-    /* Premium Texture Pattern (Subtle Damask/Marble blend) */
+    /* Premium Texture Pattern (Detailed Damask Overlay) */
     background-image: 
         radial-gradient(circle at 50% 50%, transparent 0%, var(--c-emerald-dark) 100%),
-        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2309251f' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.03'%3E%3Cpath d='M40 80c22.09 0 40-17.91 40-40S62.09 0 40 0 0 17.91 0 40s17.91 40 40 40zM40 60c11.05 0 20-8.95 20-20S51.05 20 40 20s-20 8.95-20 20 8.95 20 20 20z'/%3E%3Cpath d='M40 0c22.09 0 40 17.91 40 40S62.09 80 40 80 0 62.09 0 40 17.91 0 40 0z' opacity='0.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     background-attachment: fixed;
     position: relative;
 }
@@ -83,44 +83,95 @@ body::before {
     opacity: 0.8;
 }
 
-/* SVG Data URI for Premium Abstract Gold Batik Corner Ornament */
+/* SVG Data URI for Exact Replica Floral Border */
 .fixed-frame {
-    --ornament: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3C!-- Abstract Batik Swirls --%3E%3Cpath d='M5,5 Q30,5 50,25 T95,50' stroke='%23D4AF37' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M5,5 Q5,30 25,50 T50,95' stroke='%23D4AF37' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M25,25 Q40,10 60,25 T80,50' stroke='%23D4AF37' stroke-width='1' fill='none' opacity='0.7'/%3E%3Cpath d='M25,25 Q10,40 25,60 T50,80' stroke='%23D4AF37' stroke-width='1' fill='none' opacity='0.7'/%3E%3C!-- Gold Dots/Accents --%3E%3Ccircle cx='5' cy='5' r='3' fill='%23F3E5AB'/%3E%3Ccircle cx='50' cy='25' r='2' fill='%23D4AF37'/%3E%3Ccircle cx='25' cy='50' r='2' fill='%23D4AF37'/%3E%3Ccircle cx='95' cy='50' r='1.5' fill='%23D4AF37' opacity='0.8'/%3E%3Ccircle cx='50' cy='95' r='1.5' fill='%23D4AF37' opacity='0.8'/%3E%3C/svg%3E");
+    /* Top Left Corner: Exact match of the reference lily cluster */
+    --corner-tl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none'%3E%3C!-- Main Lily --%3E%3Cpath d='M40,40 Q80,20 100,50 Q110,90 60,100 Q30,90 40,40' stroke='%23D4AF37' stroke-width='1.5' fill='none'/%3E%3Cpath d='M40,40 Q20,80 50,110 Q90,120 100,60' stroke='%23D4AF37' stroke-width='1.5' fill='none'/%3E%3C!-- Petal Details --%3E%3Cpath d='M40,40 Q60,60 80,80' stroke='%23D4AF37' stroke-width='1'/%3E%3C!-- Surrounding Leaves (Extending Outwards) --%3E%3Cpath d='M100,50 Q140,40 160,60 Q140,80 100,70' stroke='%23D4AF37' stroke-width='1.5' fill='none'/%3E%3Cpath d='M160,60 Q180,50 190,70' stroke='%23D4AF37' stroke-width='1' fill='none'/%3E%3C!-- Surrounding Leaves (Extending Downwards) --%3E%3Cpath d='M50,110 Q40,150 60,170 Q80,150 70,110' stroke='%23D4AF37' stroke-width='1.5' fill='none'/%3E%3Cpath d='M60,170 Q50,190 70,200' stroke='%23D4AF37' stroke-width='1' fill='none'/%3E%3C!-- Small Buds --%3E%3Ccircle cx='120' cy='30' r='3' fill='%23D4AF37'/%3E%3Ccircle cx='30' cy='120' r='3' fill='%23D4AF37'/%3E%3C/svg%3E");
+    
+    /* Bottom Right Corner: Rotated match */
+    --corner-br: var(--corner-tl);
+    
+    /* Reference Chain Pattern: Oval links with small dots between */
+    --border-chain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='10' viewBox='0 0 30 10' fill='none'%3E%3Cellipse cx='10' cy='5' rx='8' ry='3' stroke='%23D4AF37' stroke-width='1' fill='none'/%3E%3Ccircle cx='24' cy='5' r='1.5' fill='%23D4AF37'/%3E%3C/svg%3E");
+    
+    pointer-events: none; /* Ensure clicks pass through */
+    z-index: 100; /* Keep above bg but below interactive elements */
 }
 
+/* 1. Top Left Flower */
 .fixed-frame::before {
-    top: 15px; left: 15px;
-    width: 100px; height: 100px;
-    background-image: var(--ornament);
+    top: 0; left: 0;
+    width: 180px; height: 180px; /* Larger to capture detail */
+    background-image: var(--corner-tl);
+    background-size: contain;
+    background-repeat: no-repeat;
     opacity: 1;
-    animation: breathe 6s infinite alternate;
+    transform: none;
 }
 
+/* 2. Bottom Right Flower (Rotated 180deg) */
 .fixed-frame::after {
-    top: 15px; right: 15px;
-    width: 100px; height: 100px;
-    background-image: var(--ornament);
-    transform: scaleX(-1);
+    top: auto; bottom: 0;
+    left: auto; right: 0;
+    width: 180px; height: 180px;
+    background-image: var(--corner-br);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(180deg);
     opacity: 1;
-    animation: breathe 6s infinite alternate-reverse;
 }
 
+/* 3. Border Lines (Chain Pattern) */
+.frame-border {
+    border: none;
+}
+
+/* Top Border Line */
 .frame-border::before {
-    bottom: 0; left: 0;
-    width: 100px; height: 100px;
-    background-image: var(--ornament);
-    transform: scaleY(-1);
-    opacity: 1;
-    animation: breathe 6s infinite alternate-reverse;
+    content: '';
+    position: absolute;
+    top: 15px; left: 180px; right: 20px; /* Start after flower */
+    height: 10px;
+    background-image: var(--border-chain);
+    background-repeat: repeat-x;
+    background-size: 30px 10px;
+    opacity: 0.9;
 }
 
+/* Bottom Border Line */
 .frame-border::after {
-    bottom: 0; right: 0;
-    width: 100px; height: 100px;
-    background-image: var(--ornament);
-    transform: scale(-1);
-    opacity: 1;
-    animation: breathe 6s infinite alternate;
+    content: '';
+    position: absolute;
+    bottom: 15px; left: 20px; right: 180px; /* End before flower */
+    height: 10px;
+    background-image: var(--border-chain);
+    background-repeat: repeat-x;
+    background-size: 30px 10px;
+    opacity: 0.9;
+}
+
+/* Left Border Line */
+.border-left {
+    position: absolute;
+    top: 180px; bottom: 20px; left: 15px;
+    width: 10px;
+    background-image: var(--border-chain);
+    background-repeat: repeat-y;
+    background-size: 10px 30px; /* Rotated aspect */
+    opacity: 0.9;
+    /* Rotate the pattern for vertical lines */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='30' viewBox='0 0 10 30' fill='none'%3E%3Cellipse cx='5' cy='10' rx='3' ry='8' stroke='%23D4AF37' stroke-width='1' fill='none'/%3E%3Ccircle cx='5' cy='24' r='1.5' fill='%23D4AF37'/%3E%3C/svg%3E");
+}
+
+/* Right Border Line */
+.border-right {
+    position: absolute;
+    top: 20px; bottom: 180px; right: 15px;
+    width: 10px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='30' viewBox='0 0 10 30' fill='none'%3E%3Cellipse cx='5' cy='10' rx='3' ry='8' stroke='%23D4AF37' stroke-width='1' fill='none'/%3E%3Ccircle cx='5' cy='24' r='1.5' fill='%23D4AF37'/%3E%3C/svg%3E");
+    background-repeat: repeat-y;
+    background-size: 10px 30px;
+    opacity: 0.9;
 }
 
 @keyframes breathe {
@@ -299,6 +350,29 @@ h1, h2, h3 { font-weight: 400; }
     z-index: -1;
 }
 
+/* Ensure bg image is visible but dimmed */
+.hero-img-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%; /* Focus on faces */
+    opacity: 0.4; /* Slightly more visible */
+    filter: grayscale(100%) contrast(1.2) brightness(0.8); /* B&W Cinematic Look */
+    animation: kenBurns 30s infinite alternate; /* Slower movement */
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    /* Professional Cinematic Gradient */
+    background: linear-gradient(to bottom, 
+        rgba(5,31,24,0.7) 0%,      /* Dark top for text */
+        rgba(5,31,24,0.3) 40%,     /* Clearer middle for faces */
+        var(--c-emerald-dark) 100% /* Fade to solid bottom */
+    );
+    mix-blend-mode: multiply; /* Blends better with B&W photo */
+}
+
 .hero-content-wrapper {
     display: flex;
     flex-direction: column;
@@ -313,14 +387,15 @@ h1, h2, h3 { font-weight: 400; }
     padding: 2rem;
     position: relative;
     z-index: 2;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.8); /* Stronger shadow for readability */
 }
 
 .hero-image-container {
     position: relative;
     width: 100%;
-    max-width: 600px; /* Limit max width on desktop */
-    margin-top: auto; /* Push to bottom */
+    max-width: 800px; /* Wider for cinematic feel */
+    margin-top: -10vh; /* Adjusted for balance */
     z-index: 1;
     display: flex;
     justify-content: center;
@@ -328,14 +403,14 @@ h1, h2, h3 { font-weight: 400; }
 }
 
 .hero-img-nobg {
-    max-height: 55vh; /* Don't take up too much height */
+    max-height: 70vh; /* Dominant portrait size */
     width: auto;
     max-width: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.6));
-    animation: float 6s ease-in-out infinite;
-    mask-image: linear-gradient(to bottom, black 80%, transparent 100%); /* Fade out bottom slightly */
-    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    filter: drop-shadow(0 0 50px rgba(0,0,0,0.8)); /* Deep shadow for depth */
+    animation: none; /* Static, professional portrait style */
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
 
 @keyframes float {
@@ -500,6 +575,15 @@ h1, h2, h3 { font-weight: 400; }
     padding-top: 4rem;
 }
 
+.section-title {
+    font-family: var(--f-display);
+    font-size: 2.5rem;
+    color: var(--c-gold);
+    margin-bottom: 0.5rem; /* Extremely tight margin to pull closer to photo */
+    position: relative;
+    z-index: 5; /* Ensure above any photo elements */
+}
+
 .inviter-bg {
     position: absolute;
     inset: 0;
@@ -510,26 +594,34 @@ h1, h2, h3 { font-weight: 400; }
 .inviter-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(5,31,24,0.2) 0%, var(--c-emerald-dark) 80%);
+    /* Similar B&W Cinematic Gradient for Parents */
+    background: linear-gradient(to bottom, 
+        rgba(5,31,24,0.6) 0%, 
+        rgba(5,31,24,0.3) 50%, 
+        var(--c-emerald-dark) 95%
+    );
+    mix-blend-mode: multiply;
 }
 
 .inviter-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    padding-top: 0;
+    gap: 0; /* Remove gap to connect photo and name */
+    padding-top: 2rem;
 }
 
 .inviter-photo-wrapper {
-    width: 300px;
-    height: 400px;
+    width: 100%;
+    max-width: 500px; /* Much larger size */
+    height: auto;
+    aspect-ratio: 3/4; /* Standard portrait ratio */
     position: relative;
-    margin-bottom: 1rem;
-    /* Add a nice frame for the parents cutout */
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-    border-radius: 50% 50% 0 0;
+    margin-bottom: -2rem; /* Pull name up slightly */
+    /* Clean, invisible frame for professional look */
+    background: transparent;
+    border: none;
+    border-radius: 0;
 }
 
 .inviter-img-nobg {
@@ -537,19 +629,30 @@ h1, h2, h3 { font-weight: 400; }
     height: 100%;
     object-fit: contain;
     object-position: bottom;
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.4));
+    filter: drop-shadow(0 10px 40px rgba(0,0,0,0.7)); /* Deep shadow */
     transition: transform 0.3s ease;
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 
 .inviter-img-nobg:hover {
     transform: scale(1.05);
 }
 
+.inviter-names {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 1rem;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.8); /* Ensure readability over photo feet */
+}
+
 .parents-main-name {
     font-family: var(--f-display);
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive sizing: 2rem on mobile up to 3.5rem on desktop */
     color: var(--c-gold);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
+    line-height: 1.1;
 }
 
 .parents-role {
@@ -642,24 +745,37 @@ h1, h2, h3 { font-weight: 400; }
 
 /* --- Closing --- */
 .closing-section {
-    padding: 6rem 1.5rem;
+    padding: 4rem 1.5rem 2rem 1.5rem; /* Reduced padding */
     text-align: center;
     position: relative;
 }
 
-.family-name {
-    font-family: var(--f-display);
-    font-size: 2rem;
+.bancos-family-text {
+    font-family: var(--f-display); /* Back to Serif/Display for Boldness */
+    font-weight: 700; /* Bold */
+    font-size: 3.5rem;
     color: var(--c-gold);
+    line-height: 1.1;
+    margin-bottom: 3rem;
+    text-transform: uppercase; /* Uppercase for strong presence */
+    letter-spacing: 2px;
+}
+
+.family-name {
+    font-family: var(--f-script);
+    font-size: 3rem;
+    color: var(--c-gold-light);
     margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
 .main-footer {
-    padding: 2rem;
+    padding: 1rem;
     text-align: center;
     font-size: 0.8rem;
     color: var(--c-white-dim);
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(212, 175, 55, 0.2); /* Gold separator */
+    margin-top: 2rem;
 }
 
 /* --- Sticky Bar --- */
@@ -722,6 +838,37 @@ h1, h2, h3 { font-weight: 400; }
 .delay-4 { transition-delay: 0.8s; }
 
 /* --- Responsive --- */
+@media (max-width: 767px) {
+    /* Scale down border on mobile */
+    .fixed-frame::before, .fixed-frame::after {
+        width: 100px; height: 100px; /* Smaller flowers */
+    }
+    
+    /* Adjust chain border positions */
+    .frame-border::before { left: 100px; right: 15px; }
+    .frame-border::after { left: 15px; right: 100px; }
+    .border-left { top: 100px; bottom: 15px; }
+    .border-right { top: 15px; bottom: 100px; }
+    
+    /* Add padding to prevent text overlap */
+    .content-pad {
+        padding: 4rem 1rem; /* Reduced vertical padding, but enough horizontal */
+    }
+    
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    /* Ensure Hero text clears the top border */
+    .hero-text-container {
+        margin-top: 2rem; /* Push down slightly */
+        padding: 1rem;
+    }
+    
+    .name-block { font-size: 2.5rem; }
+}
+
 @media (min-width: 768px) {
     .masonry-grid { grid-template-columns: repeat(4, 1fr); }
     .hero-title { flex-direction: row; gap: 1.5rem; align-items: baseline; }

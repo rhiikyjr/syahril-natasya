@@ -17,6 +17,14 @@ body{
     var(--green-darker);
   position:relative;
 }
+*{-webkit-tap-highlight-color: transparent}
+
+.container{
+  width:100%;
+  max-width: min(100%, 1080px);
+  padding: 0 clamp(16px, 5vw, 48px);
+  margin: 0 auto;
+}
 
 /* Cover */
 .cover{
@@ -40,17 +48,17 @@ body{
 .monogram{
   font-family: Cinzel, serif;
   font-weight:900; letter-spacing:2px;
-  font-size:28px; margin-bottom:8px;
+  font-size: clamp(20px, 3.2vw, 28px); margin-bottom:8px;
   color:var(--gold);
   text-shadow: 0 0 8px rgba(212,175,55,0.35);
 }
 .cover-title{
   font-family: Cinzel, serif;
-  font-size:20px; margin:8px 0 4px;
+  font-size: clamp(16px, 2.8vw, 20px); margin:8px 0 4px;
   color:var(--gold);
 }
 .recipient{
-  font-size:28px; font-weight:600;
+  font-size: clamp(20px, 4.4vw, 28px); font-weight:600;
   margin:8px 0 16px;
 }
 .recipient-input-wrap{margin:0 0 16px}
@@ -79,9 +87,9 @@ body{
 .btn:focus{outline:none}
 
 /* Page */
-.page{min-height:100vh}
+.page{min-height:100svh}
 .hero{
-  padding:140px 24px 80px;
+  padding: clamp(96px, 15svh, 140px) clamp(16px, 5vw, 24px) 80px;
   text-align:center;
   position:relative;
   overflow:hidden;
@@ -93,11 +101,11 @@ body{
 }
 .names{
   font-family: Cinzel, serif;
-  font-weight:900; font-size:48px;
+  font-weight:900; font-size: clamp(32px, 8vw, 56px);
   margin:8px 0 8px;
 }
 .amp{color:var(--gold)}
-.detail{opacity:0.9}
+.detail{opacity:0.92; font-size: clamp(14px, 3.4vw, 18px)}
 
 .gold-shimmer{
   background-image: linear-gradient(90deg, #e8e5dd 0%, var(--gold) 35%, #e8e5dd 70%, var(--gold-soft) 100%);
@@ -114,7 +122,7 @@ body{
 
 .section-title{
   font-family: Cinzel, serif;
-  font-size:22px; color:var(--gold);
+  font-size: clamp(18px, 3.8vw, 22px); color:var(--gold);
   text-align:center; margin:24px 0 8px;
 }
 .inviter{padding:24px}
@@ -181,8 +189,25 @@ body::before, body::after{
 body::before{top:0}
 body::after{bottom:0; transform: rotate(180deg)}
 
+.sticky-bar{
+  position:fixed; left:0; right:0; bottom:0;
+  padding:12px clamp(12px, 5vw, 24px);
+  background:linear-gradient(180deg, rgba(8,32,25,0), rgba(8,32,25,0.85));
+  display:flex; justify-content:center;
+  z-index:6;
+}
+.sticky-inner{
+  display:flex; gap:12px; align-items:center;
+  border:1px solid rgba(212,175,55,0.3);
+  background:rgba(245,240,230,0.06);
+  padding:8px 12px; border-radius:999px;
+  backdrop-filter:saturate(120%) blur(6px);
+}
+.sticky-text{font-weight:600; color:var(--gold)}
+
 @media (max-width: 800px){
   .inviter-grid{grid-template-columns:1fr}
   .rsvp-grid{grid-template-columns:1fr}
   .names{font-size:40px}
+  body::before, body::after{display:none}
 }

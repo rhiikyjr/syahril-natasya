@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const openBtn = document.getElementById('openBtn');
   const shareLink = document.getElementById('shareLink');
   const copyLinkBtn = document.getElementById('copyLinkBtn');
+  const copyLinkBtnSticky = document.getElementById('copyLinkBtnSticky');
   const hero = document.querySelector('[data-parallax]');
   const heroContent = hero ? hero.querySelector('.hero-content') : null;
 
@@ -60,18 +61,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if(copyLinkBtn){
-    copyLinkBtn.addEventListener('click', async () => {
+  async function copyLink(el){
       const url = (shareLink && shareLink.dataset.url) || window.location.href;
       try{
         await navigator.clipboard.writeText(url);
-        copyLinkBtn.textContent = 'Tersalin';
-        setTimeout(()=> copyLinkBtn.textContent = 'Salin Tautan', 1200);
+        el.textContent = 'Tersalin';
+        setTimeout(()=> el.textContent = 'Salin Tautan', 1200);
       }catch(e){
         alert('Gagal menyalin tautan. Salin manual:\n' + url);
       }
-    });
   }
+  if(copyLinkBtn) copyLinkBtn.addEventListener('click', ()=> copyLink(copyLinkBtn));
+  if(copyLinkBtnSticky) copyLinkBtnSticky.addEventListener('click', ()=> copyLink(copyLinkBtnSticky));
 
   // Reveal on scroll
   const revealEls = document.querySelectorAll('[data-reveal]');

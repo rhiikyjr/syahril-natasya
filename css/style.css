@@ -282,14 +282,15 @@ h1, h2, h3 { font-weight: 400; }
 
 /* --- Hero Section --- */
 .hero-section {
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Start from top */
     align-items: center;
     text-align: center;
     overflow: hidden;
+    padding-top: 10vh; /* Give space at top */
 }
 
 .hero-bg {
@@ -298,29 +299,43 @@ h1, h2, h3 { font-weight: 400; }
     z-index: -1;
 }
 
-.hero-img-bg {
+.hero-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    animation: kenBurns 20s infinite alternate;
+    justify-content: space-between;
+    flex-grow: 1;
 }
 
-.hero-fg {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 0;
-    height: 80%; /* Adjust as needed */
-    pointer-events: none;
+.hero-text-container {
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 2rem;
+}
+
+.hero-image-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Limit max width on desktop */
+    margin-top: auto; /* Push to bottom */
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .hero-img-nobg {
-    height: 100%;
+    max-height: 55vh; /* Don't take up too much height */
     width: auto;
+    max-width: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.6));
     animation: float 6s ease-in-out infinite;
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%); /* Fade out bottom slightly */
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 
 @keyframes float {
@@ -482,6 +497,7 @@ h1, h2, h3 { font-weight: 400; }
 .inviter-section {
     position: relative;
     overflow: hidden;
+    padding-top: 4rem;
 }
 
 .inviter-bg {
@@ -490,39 +506,43 @@ h1, h2, h3 { font-weight: 400; }
     z-index: 0;
 }
 
-.inviter-img-bg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.4; /* Dimmed background */
-}
-
+/* Remove image bg styles, rely on overlay */
 .inviter-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, var(--c-emerald-dark), transparent 50%, var(--c-emerald-dark));
+    background: radial-gradient(circle at center, rgba(5,31,24,0.2) 0%, var(--c-emerald-dark) 80%);
 }
 
 .inviter-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem; /* Increase gap */
-    padding-top: 2rem;
+    gap: 1rem;
+    padding-top: 0;
 }
 
 .inviter-photo-wrapper {
-    width: 250px;
-    height: 350px;
+    width: 300px;
+    height: 400px;
     position: relative;
     margin-bottom: 1rem;
+    /* Add a nice frame for the parents cutout */
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50% 50% 0 0;
 }
 
 .inviter-img-nobg {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    object-position: bottom;
     filter: drop-shadow(0 5px 15px rgba(0,0,0,0.4));
+    transition: transform 0.3s ease;
+}
+
+.inviter-img-nobg:hover {
+    transform: scale(1.05);
 }
 
 .parents-main-name {

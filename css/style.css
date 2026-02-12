@@ -30,43 +30,68 @@ body {
     background-color: var(--c-emerald-dark);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    /* Premium Texture Pattern (Subtle Damask/Marble blend) */
+    background-image: 
+        radial-gradient(circle at 50% 50%, transparent 0%, var(--c-emerald-dark) 100%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2309251f' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
 }
 
-/* --- Fixed Gold Border Frame --- */
+/* --- Fixed Gold Border Frame with Ornaments --- */
 .fixed-frame {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 999; /* High z-index but below opening layer if needed */
-    padding: 10px;
+    z-index: 999;
+    padding: 15px;
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.8); /* Vignette effect */
 }
 
 .frame-border {
     width: 100%;
     height: 100%;
-    border: 2px solid var(--c-gold);
-    border-radius: 0; /* Or adjust for rounded corners */
+    border: 1px solid rgba(212, 175, 55, 0.3);
     position: relative;
-    box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.2);
 }
 
-.frame-border::before, .frame-border::after {
+/* Corner Ornaments (CSS-based Art Deco) */
+.frame-border::before, .frame-border::after,
+.fixed-frame::before, .fixed-frame::after {
     content: '';
     position: absolute;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--c-gold);
-    transition: all 0.5s ease;
+    width: 80px;
+    height: 80px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.8;
+}
+
+/* SVG Data URI for Corner Ornament */
+.fixed-frame {
+    --ornament: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23D4AF37' stroke-width='2'%3E%3Cpath d='M2,2 L30,2 Q60,2 60,30 L60,60' /%3E%3Cpath d='M2,10 L20,10 Q40,10 40,30 L40,50' opacity='0.7'/%3E%3Ccircle cx='5' cy='5' r='3' fill='%23D4AF37'/%3E%3Ccircle cx='60' cy='60' r='2' fill='%23D4AF37'/%3E%3C/svg%3E");
+}
+
+.fixed-frame::before {
+    top: 15px; left: 15px;
+    background-image: var(--ornament);
+}
+
+.fixed-frame::after {
+    top: 15px; right: 15px;
+    background-image: var(--ornament);
+    transform: scaleX(-1);
 }
 
 .frame-border::before {
-    top: -2px; left: -2px;
-    border-right: none; border-bottom: none;
+    bottom: 0; left: 0;
+    background-image: var(--ornament);
+    transform: scaleY(-1);
 }
 
 .frame-border::after {
-    bottom: -2px; right: -2px;
-    border-left: none; border-top: none;
+    bottom: 0; right: 0;
+    background-image: var(--ornament);
+    transform: scale(-1);
 }
 
 /* --- Ambient Effects --- */
@@ -375,7 +400,9 @@ h1, h2, h3 { font-weight: 400; }
 
 /* --- Couple --- */
 .couple-section {
-    background: linear-gradient(to bottom, var(--c-emerald-dark), #09251f);
+    /* Enhanced texture for Couple Section */
+    background-color: var(--c-emerald-dark);
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23D4AF37' fill-opacity='0.1'/%3E%3C/svg%3E");
 }
 
 .couple-name {
@@ -490,6 +517,7 @@ h1, h2, h3 { font-weight: 400; }
     position: relative;
     z-index: 2;
     margin-bottom: 2rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .event-name {

@@ -915,7 +915,7 @@ h1, h2, h3 { font-weight: 400; }
 .delay-3 { transition-delay: 0.6s; }
 .delay-4 { transition-delay: 0.8s; }
 
-/* --- Responsive --- */
+    /* --- Responsive --- */
 @media (max-width: 767px) {
     /* Scale down border on mobile */
     .fixed-frame::before, .fixed-frame::after {
@@ -930,33 +930,39 @@ h1, h2, h3 { font-weight: 400; }
     
     /* Add padding to prevent text overlap */
     .content-pad {
-        padding: 4rem 1rem; /* Reduced vertical padding, but enough horizontal */
+        padding: 4rem 1.5rem; /* Increased horizontal padding */
     }
     
     .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding-left: 1.5rem; /* Increased padding */
+        padding-right: 1.5rem;
     }
     
     /* Ensure Hero text clears the top border */
     .hero-text-container {
-        margin-top: 2rem; /* Push down slightly */
+        margin-top: 4rem; /* Push down more significantly */
         padding: 1rem;
     }
     
     .name-block {
         /* Mobile specific adjustments for name */
-        font-size: clamp(3rem, 15vw, 4.5rem) !important; /* Smaller range for mobile */
-        margin-left: -5% !important; /* Less offset on mobile */
-        margin-right: -5% !important; /* Less offset on mobile */
+        font-size: clamp(2.5rem, 12vw, 4rem) !important; /* Even smaller min size */
+        margin-left: 0 !important; /* Remove offset completely on mobile */
+        margin-right: 0 !important; /* Remove offset completely on mobile */
+        line-height: 1.2; /* Looser line height */
+        transform: none !important; /* Remove rotation */
     }
     
     .name-block:nth-child(3) {
-        margin-top: -0.2rem !important; /* Less overlap on mobile */
+        margin-top: 0.5rem !important; /* Add space instead of overlap */
     }
     
     .ampersand {
-        font-size: 1.5rem !important; /* Smaller ampersand */
+        position: static;
+        transform: none;
+        margin: 0.5rem 0 !important;
+        font-size: 2rem !important;
+        opacity: 0.8;
     }
 }
 

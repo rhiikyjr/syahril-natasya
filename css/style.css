@@ -216,56 +216,67 @@ h1, h2, h3 { font-weight: 400; }
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background-color: var(--c-emerald-deep);
-    transition: opacity 1.5s ease, visibility 1.5s;
-    opacity: 1;
-    visibility: visible;
 }
 
 .opening-layer.is-open {
-    opacity: 0;
-    visibility: hidden;
     pointer-events: none;
 }
 
-.opening-cover-bg {
+/* Curtain Animation Restored */
+.curtain {
     position: absolute;
-    inset: 0;
-    z-index: 0;
-    opacity: 0.6;
+    top: 0; height: 100%; width: 51%; /* Slight overlap */
+    background-color: var(--c-emerald-deep);
+    z-index: 1;
+    transition: transform 2.5s var(--ease-out-expo);
+    
+    /* Photo Background Integration */
+    background-image: url('../images/mempelai-bg.png');
+    background-size: 200% 100%; /* Double width to simulate full screen split */
+    background-repeat: no-repeat;
+    filter: grayscale(100%) contrast(1.1) brightness(0.5); /* Cinematic Effect */
 }
 
-.cover-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    filter: grayscale(100%) contrast(1.1) brightness(0.6);
+/* Left Curtain: Shows left half of image */
+.curtain-left { 
+    left: 0; 
+    border-right: 1px solid rgba(212, 175, 55, 0.3); 
+    background-position: 0% center;
 }
 
-.cover-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(5,31,24,0.4) 0%, var(--c-emerald-deep) 90%);
+/* Right Curtain: Shows right half of image */
+.curtain-right { 
+    right: 0; 
+    border-left: 1px solid rgba(212, 175, 55, 0.3); 
+    background-position: 100% center;
 }
+
+/* Open State */
+.opening-layer.is-open .curtain-left { transform: translateX(-100%); }
+.opening-layer.is-open .curtain-right { transform: translateX(100%); }
 
 .opening-content {
     position: relative;
     z-index: 10;
     text-align: center;
     padding: 2rem;
+    opacity: 1;
+    transition: opacity 1s ease;
     width: 100%;
     max-width: 500px;
+    
+    /* Glassmorphism for text readability */
     background: rgba(5, 31, 24, 0.6);
     backdrop-filter: blur(5px);
     border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 16px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-    transition: transform 1s ease;
 }
 
 .opening-layer.is-open .opening-content {
-    transform: scale(1.1); /* Subtle zoom out effect when opening */
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.9);
 }
 
 .opening-layer.is-open {

@@ -452,7 +452,7 @@ h1, h2, h3 { font-weight: 400; }
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0; /* Remove gap completely for tighter stacking */
     margin: 1rem 0 2rem 0;
     position: relative;
     z-index: 10;
@@ -460,35 +460,39 @@ h1, h2, h3 { font-weight: 400; }
 
 .name-block {
     font-family: var(--f-script); /* Elegant Script */
-    font-size: clamp(3.5rem, 10vw, 6rem); /* Larger */
-    line-height: 1.1;
+    font-size: clamp(4rem, 12vw, 7rem); /* Even Larger for Impact */
+    line-height: 0.8; /* Tighter line height to bring names closer */
     color: var(--c-gold);
-    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    transform: rotate(-3deg); /* Slight organic tilt */
+    text-shadow: 0 4px 15px rgba(0,0,0,0.6); /* Enhanced shadow */
+    transform: rotate(-3deg);
+    padding: 0 1rem; /* Prevent cutting off swashes */
 }
 
 .name-block:nth-child(1) {
-    align-self: flex-start;
-    margin-left: 10%;
+    align-self: center; /* Center align for balance */
+    margin-left: -20%; /* Offset left */
+    z-index: 2;
 }
 
 .name-block:nth-child(3) {
-    align-self: flex-end;
-    margin-right: 10%;
-    margin-top: -1rem; /* Overlap slightly */
+    align-self: center;
+    margin-right: -20%; /* Offset right */
+    margin-top: -0.5rem; /* Overlap vertically */
+    z-index: 2;
 }
 
 .ampersand {
     font-family: var(--f-display);
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-style: italic;
     color: var(--c-white-dim);
-    margin: 0.5rem 0;
+    margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0.8;
+    opacity: 0.6;
+    z-index: 1; /* Behind names */
 }
 
 /* Re-adding hero-date as it was removed in previous edit */
@@ -505,22 +509,24 @@ h1, h2, h3 { font-weight: 400; }
 @media (min-width: 768px) {
     .hero-title {
         flex-direction: row;
-        align-items: baseline;
-        gap: 2rem;
+        align-items: center;
+        gap: 1rem;
     }
     
     .name-block {
         transform: none;
         margin: 0 !important;
         /* Desktop size */
-        font-size: 5rem;
+        font-size: 6rem;
+        line-height: 1;
     }
     
     .ampersand {
         position: static;
         transform: none;
-        font-size: 3rem;
-        margin: 0;
+        font-size: 4rem;
+        margin: 0 1rem;
+        opacity: 0.8;
     }
 }
 

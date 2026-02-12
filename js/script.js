@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const name = currentRecipient();
       setRecipientName(name);
       updateShare();
+      document.body.classList.add('opened');
       if(cover){
         cover.style.opacity = '0';
         setTimeout(()=>{ cover.style.display = 'none'; }, 300);

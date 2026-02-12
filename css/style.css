@@ -19,6 +19,29 @@ body{
 }
 *{-webkit-tap-highlight-color: transparent}
 
+.grain{
+  position:fixed; inset:0; pointer-events:none; z-index:1;
+  opacity:.08; mix-blend-mode:soft-light;
+  background-image:
+    url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\"><filter id=\"noise\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.9\" numOctaves=\"2\" stitchTiles=\"stitch\"/></filter><rect width=\"64\" height=\"64\" filter=\"url(%23noise)\" opacity=\"0.35\"/></svg>');
+  background-size: 256px 256px;
+  animation: grainMove 6s linear infinite;
+}
+@keyframes grainMove{
+  0%{ transform: translate3d(0,0,0) }
+  50%{ transform: translate3d(-2%,1%,0) }
+  100%{ transform: translate3d(0,0,0) }
+}
+
+.frame-ornaments .corner{
+  position:fixed; width:24px; height:24px; border:1px solid rgba(212,175,55,0.5);
+  z-index:4; pointer-events:none;
+}
+.frame-ornaments .corner.tl{top:10px; left:10px; border-right:none; border-bottom:none}
+.frame-ornaments .corner.tr{top:10px; right:10px; border-left:none; border-bottom:none}
+.frame-ornaments .corner.bl{bottom:10px; left:10px; border-right:none; border-top:none}
+.frame-ornaments .corner.br{bottom:10px; right:10px; border-left:none; border-top:none}
+
 .container{
   width:100%;
   max-width: min(100%, 1080px);
@@ -94,6 +117,27 @@ body{
   position:relative;
   overflow:hidden;
 }
+.hero::before{
+  content:""; position:absolute; inset:-10%;
+  background:
+    radial-gradient(80vmax 40vmax at 50% 10%, rgba(212,175,55,0.12), transparent 60%),
+    radial-gradient(40vmax 20vmax at 85% 75%, rgba(255,255,255,0.04), transparent 60%),
+    radial-gradient(40vmax 20vmax at 15% 80%, rgba(255,255,255,0.03), transparent 60%);
+  filter: blur(2px);
+  z-index:0;
+}
+.hero::after{
+  content:""; position:absolute; inset:-10%;
+  background:
+    radial-gradient(120px 120px at 20% 30%, rgba(212,175,55,0.18), transparent 60%),
+    radial-gradient(160px 160px at 80% 70%, rgba(212,175,55,0.12), transparent 60%);
+  opacity:.6; mix-blend-mode:screen; z-index:0;
+  animation: bokeh 12s ease-in-out infinite;
+}
+@keyframes bokeh{
+  0%,100%{ transform: translateY(0) }
+  50%{ transform: translateY(-1.5%) }
+}
 .pretitle{
   font-family: Cinzel, serif;
   color:var(--gold);
@@ -106,6 +150,11 @@ body{
 }
 .amp{color:var(--gold)}
 .detail{opacity:0.92; font-size: clamp(14px, 3.4vw, 18px)}
+.gold-divider{
+  width: clamp(120px, 30vw, 260px); height:1px;
+  margin: 12px auto 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.5) 50%, transparent 100%);
+}
 
 .gold-shimmer{
   background-image: linear-gradient(90deg, #e8e5dd 0%, var(--gold) 35%, #e8e5dd 70%, var(--gold-soft) 100%);
@@ -185,9 +234,12 @@ body::before, body::after{
   content:""; position:fixed; left:0; right:0; height:40px;
   background:linear-gradient(180deg, rgba(0,0,0,0.85), rgba(0,0,0,0));
   z-index:5; pointer-events:none;
+  transition: transform .6s ease, opacity .6s ease;
 }
 body::before{top:0}
 body::after{bottom:0; transform: rotate(180deg)}
+body.opened::before{ transform: translateY(-100%) }
+body.opened::after{ transform: translateY(100%) rotate(180deg); opacity:0 }
 
 .sticky-bar{
   position:fixed; left:0; right:0; bottom:0;
@@ -210,4 +262,11 @@ body::after{bottom:0; transform: rotate(180deg)}
   .rsvp-grid{grid-template-columns:1fr}
   .names{font-size:40px}
   body::before, body::after{display:none}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .gold-shimmer{ animation:none }
+  .grain{ animation:none }
+  .hero::after{ animation:none }
+  [data-reveal]{ transition:none }
 }

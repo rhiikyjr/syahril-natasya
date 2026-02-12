@@ -60,13 +60,14 @@
         <section class="hero-section">
             <div class="hero-bg">
                 <!-- Background Photo (Layer 1) -->
-                <img src="images/mempelai-bg.jpg" alt="Background" class="hero-img-bg" onerror="this.src='https://placehold.co/800x1200/051F18/D4AF37?text=Mempelai+Background'; this.style.opacity='0.3'">
+                <!-- Use relative path, but add timestamp to force refresh if needed -->
+                <img src="./images/mempelai-bg.jpg" alt="Background" class="hero-img-bg" onerror="this.src='https://placehold.co/800x1200/051F18/D4AF37?text=Mempelai+Background'; this.style.opacity='0.3'; console.error('BG Image Load Failed: ' + this.src)">
                 <div class="hero-overlay"></div>
             </div>
 
             <div class="hero-fg">
                 <!-- No-Background Photo (Layer 2) -->
-                 <img src="images/mempelai-nobg.png" alt="Couple" class="hero-img-nobg" onerror="this.style.display='none'; console.log('Image failed: mempelai-nobg.png')">
+                 <img src="./images/mempelai-nobg.png" alt="Couple" class="hero-img-nobg" onerror="this.style.display='none'; console.error('FG Image Load Failed: ' + this.src)">
             </div>
             
             <div class="hero-text-container">
@@ -124,7 +125,7 @@
         <section class="inviter-section content-pad">
             <div class="inviter-bg">
                 <!-- Background Photo for Parents -->
-                <img src="images/parents-bg.jpg" alt="Parents Background" class="inviter-img-bg" onerror="this.src='https://placehold.co/800x600/051F18/D4AF37?text=Parents+Background'; this.style.opacity='0.2'">
+                <img src="./images/parents-bg.jpg" alt="Parents Background" class="inviter-img-bg" onerror="this.src='https://placehold.co/800x600/051F18/D4AF37?text=Parents+Background'; this.style.opacity='0.2'; console.error('Parents BG Failed')">
                 <div class="inviter-overlay"></div>
             </div>
             
@@ -134,7 +135,7 @@
                 <div class="inviter-content">
                     <div class="inviter-photo-wrapper reveal-up">
                         <!-- No-Background Photo for Parents -->
-                         <img src="images/parents-nobg.png" alt="Harman & Hj Baba" class="inviter-img-nobg" onerror="this.style.display='none'; console.log('Image failed: parents-nobg.png')">
+                         <img src="./images/parents-nobg.png" alt="Harman & Hj Baba" class="inviter-img-nobg" onerror="this.style.display='none'; console.error('Parents FG Failed')">
                     </div>
                     
                     <div class="inviter-names reveal-up delay-2">
@@ -157,7 +158,7 @@
                         <div class="event-time">09:00 WITA - Selesai</div>
                         <h4 class="event-name">Akad & Resepsi</h4>
                         <p class="event-date">Selasa, 17 Februari 2026</p>
-                        <p class="event-loc">Pujo Bulcen, Kec. Pitu Riase<br>Kab. Sidrap</p>
+                        <p class="event-loc">Pujo Bulcen, Kec. Pitu Riase<br>Kab. Sidenreng Rappang</p>
                         <a href="https://maps.app.goo.gl/EQy52tHqmQDNb83m9" target="_blank" class="btn-outline">Lihat Lokasi</a>
                     </div>
                 </div>
@@ -173,16 +174,16 @@
                 <div class="masonry-grid">
                     <!-- Images will auto-hide if error -->
                     <div class="grid-item reveal-up delay-1">
-                        <img src="images/turut-1.jpg" alt="Family" onerror="this.parentElement.style.display='none'">
+                        <img src="./images/turut-1.jpg" alt="Family" onerror="this.parentElement.style.display='none'">
                     </div>
                     <div class="grid-item reveal-up delay-2">
-                        <img src="images/turut-2.jpg" alt="Family" onerror="this.parentElement.style.display='none'">
+                        <img src="./images/turut-2.jpg" alt="Family" onerror="this.parentElement.style.display='none'">
                     </div>
                     <div class="grid-item reveal-up delay-3">
-                        <img src="images/turut-3.jpg" alt="Family" onerror="this.parentElement.style.display='none'">
+                        <img src="./images/turut-3.jpg" alt="Family" onerror="this.parentElement.style.display='none'">
                     </div>
                     <div class="grid-item reveal-up delay-4">
-                        <img src="images/turut-4.jpg" alt="Family" onerror="this.parentElement.style.display='none'">
+                        <img src="./images/turut-4.jpg" alt="Family" onerror="this.parentElement.style.display='none'">
                     </div>
                 </div>
             </div>

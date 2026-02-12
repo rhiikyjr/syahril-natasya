@@ -584,23 +584,41 @@ h1, h2, h3 { font-weight: 400; }
     z-index: 5; /* Ensure above any photo elements */
 }
 
+/* Enhanced Inviter Background (Responsive B&W + Gradient) */
 .inviter-bg {
     position: absolute;
     inset: 0;
     z-index: 0;
+    overflow: hidden; /* Ensure no spill */
 }
 
-/* Remove image bg styles, rely on overlay */
+.inviter-img-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; /* Center the focus */
+    filter: grayscale(100%) brightness(0.4) contrast(1.1); /* Black & White, Darker for Pop */
+    opacity: 0.6;
+    transition: transform 0.5s ease;
+}
+
 .inviter-overlay {
     position: absolute;
     inset: 0;
-    /* Similar B&W Cinematic Gradient for Parents */
+    /* Gradient from top (dark) to bottom (solid) to highlight foreground */
     background: linear-gradient(to bottom, 
-        rgba(5,31,24,0.6) 0%, 
-        rgba(5,31,24,0.3) 50%, 
-        var(--c-emerald-dark) 95%
+        rgba(0,0,0,0.8) 0%, 
+        rgba(0,0,0,0.4) 40%, 
+        var(--c-emerald-dark) 90%
     );
-    mix-blend-mode: multiply;
+    mix-blend-mode: normal; /* Normal blend to ensure the gradient works effectively */
+}
+
+/* Responsive adjustment for background image focus */
+@media (max-width: 768px) {
+    .inviter-img-bg {
+        object-position: top center; /* Focus on faces/top part on mobile */
+    }
 }
 
 .inviter-content {

@@ -1,99 +1,88 @@
-function getParam(name){
-  const params = new URLSearchParams(window.location.search);
-  return params.get(name);
-}
-
-function setRecipientName(name){
-  const el = document.getElementById('recipient');
-  if(el) el.textContent = name || 'Tamu Undangan';
-}
-
-function buildShareLink(name){
-  const url = new URL(window.location.href);
-  url.searchParams.set('to', name || 'Tamu Undangan');
-  return url.toString();
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-  const toParam = getParam('to');
-  const input = document.getElementById('recipientInput');
-  const inputWrap = document.getElementById('recipientInputWrap');
-  const cover = document.getElementById('cover');
-  const openBtn = document.getElementById('openBtn');
-  const shareLink = document.getElementById('shareLink');
-  const copyLinkBtn = document.getElementById('copyLinkBtn');
-  const copyLinkBtnSticky = document.getElementById('copyLinkBtnSticky');
-  const hero = document.querySelector('[data-parallax]');
-  const heroContent = hero ? hero.querySelector('.hero-content') : null;
+    // --- Elements ---
+    const openingLayer = document.getElementById('opening-layer');
+    const btnOpen = document.getElementById('btn-open');
+    const recipientNameEl = document.getElementById('recipient-name');
+    const guestInput = document.getElementById('guest-input');
+    const inputWrapper = document.getElementById('input-wrapper');
+    const btnCopy = document.getElementById('btn-copy');
 
-  if (toParam){
-    setRecipientName(decodeURIComponent(toParam));
-    if(inputWrap) inputWrap.style.display = 'none';
-  }else{
-    setRecipientName('Tamu Undangan');
-    if(input) input.value = '';
-  }
+    // --- 1. Recipient Logic ---
+    const params = new URLSearchParams(window.location.search);
+    const urlTo = params.get('to');
 
-  function currentRecipient(){
-    const name = (toParam || (input && input.value) || 'Tamu Undangan');
-    return (name || '').trim();
-  }
-
-  function updateShare(){
-    const link = buildShareLink(currentRecipient());
-    if(shareLink){
-      shareLink.textContent = link;
-      shareLink.dataset.url = link;
+    if (urlTo) {
+        const decodedName = decodeURIComponent(urlTo);
+        recipientNameEl.textContent = decodedName;
+        inputWrapper.style.display = 'none'; // Hide input if name is in URL
+    } else {
+        // Allow user to type name
+        guestInput.addEventListener('input', (e) => {
+            const val = e.target.value;
+            recipientNameEl.textContent = val.trim() || 'Tamu Undangan';
+        });
     }
-  }
 
-  updateShare();
+    // --- 2. Opening Sequence ---
+    btnOpen.addEventListener('click', () => {
+        // 1. Trigger Curtain Animation
+        openingLayer.classList.add('is-open');
+        
+        // 2. Unlock Scroll
+        document.body.style.overflowY = 'auto';
 
-  if(openBtn){
-    openBtn.addEventListener('click', () => {
-      const name = currentRecipient();
-      setRecipientName(name);
-      updateShare();
-      document.body.classList.add('opened');
-      if(cover){
-        cover.style.opacity = '0';
-        setTimeout(()=>{ cover.style.display = 'none'; }, 300);
-      }
+        // 3. Play Music (Optional - Placeholder)
+        // playAudio(); 
     });
-  }
 
-  async function copyLink(el){
-      const url = (shareLink && shareLink.dataset.url) || window.location.href;
-      try{
-        await navigator.clipboard.writeText(url);
-        el.textContent = 'Tersalin';
-        setTimeout(()=> el.textContent = 'Salin Tautan', 1200);
-      }catch(e){
-        alert('Gagal menyalin tautan. Salin manual:\n' + url);
-      }
-  }
-  if(copyLinkBtn) copyLinkBtn.addEventListener('click', ()=> copyLink(copyLinkBtn));
-  if(copyLinkBtnSticky) copyLinkBtnSticky.addEventListener('click', ()=> copyLink(copyLinkBtnSticky));
+    // Lock scroll initially
+    document.body.style.overflowY = 'hidden';
 
-  // Reveal on scroll
-  const revealEls = document.querySelectorAll('[data-reveal]');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('reveal-in');
-        io.unobserve(entry.target);
-      }
+
+    // --- 3. Scroll Reveal Observer ---
+    const revealElements = document.querySelectorAll('.reveal-text, .reveal-up');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-visible');
+                // Optional: Unobserve after reveal
+                // revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
     });
-  }, {threshold: 0.15});
-  revealEls.forEach(el=> io.observe(el));
 
-  // Parallax hero content
-  function onScroll(){
-    if(!heroContent) return;
-    const y = window.scrollY || window.pageYOffset;
-    const offset = Math.min(30, y * 0.05);
-    heroContent.style.transform = `translateY(${offset}px) scale(${1 + Math.min(0.02, y*0.00008)})`;
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
+    revealElements.forEach(el => revealObserver.observe(el));
+
+
+    // --- 4. Copy Link Logic ---
+    btnCopy.addEventListener('click', async () => {
+        const currentName = recipientNameEl.textContent;
+        const baseUrl = window.location.origin + window.location.pathname;
+        // Use 'Tamu Undangan' as default if empty, but prefer URL param or input
+        let nameToShare = currentName === 'Tamu Undangan' ? '' : currentName;
+        
+        // If user typed a name, use that. If URL had a name, use that.
+        if (guestInput.value.trim()) nameToShare = guestInput.value.trim();
+        else if (urlTo) nameToShare = decodeURIComponent(urlTo);
+
+        const shareUrl = nameToShare 
+            ? `${baseUrl}?to=${encodeURIComponent(nameToShare)}`
+            : baseUrl;
+
+        try {
+            await navigator.clipboard.writeText(shareUrl);
+            const originalText = btnCopy.textContent;
+            btnCopy.textContent = "Tersalin!";
+            setTimeout(() => {
+                btnCopy.textContent = originalText;
+            }, 2000);
+        } catch (err) {
+            console.error('Failed to copy: ', err);
+            alert('Gagal menyalin. Link: ' + shareUrl);
+        }
+    });
 });

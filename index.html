@@ -1,122 +1,184 @@
 <!doctype html>
 <html lang="id">
-  <head>
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Undangan – Muh Syahril & Natasya</title>
-    <meta name="description" content="Undangan pernikahan Muh Syahril & Natasya">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>The Wedding of Muh Syahril & Natasya</title>
+    <meta name="description" content="Selasa, 17 Februari 2026 - Pujo Bulcen, Sidrap">
+    <meta name="theme-color" content="#051F18">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="css/style.css">
-    <meta name="theme-color" content="#0D2F26">
-  </head>
-  <body>
-    <div class="grain"></div>
-    <div class="frame-ornaments">
-      <span class="corner tl"></span>
-      <span class="corner tr"></span>
-      <span class="corner bl"></span>
-      <span class="corner br"></span>
+</head>
+<body>
+    <!-- Ambient Background -->
+    <div class="noise-overlay"></div>
+    <div class="ambient-light"></div>
+
+    <!-- Opening Sequence (The Hook) -->
+    <div id="opening-layer" class="opening-layer">
+        <div class="curtain curtain-left"></div>
+        <div class="curtain curtain-right"></div>
+        
+        <div class="opening-content">
+            <div class="monogram-box">
+                <span class="monogram-letter">M</span>
+                <span class="monogram-amp">&</span>
+                <span class="monogram-letter">N</span>
+            </div>
+            
+            <div class="guest-container">
+                <p class="guest-label">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+                <h2 id="recipient-name" class="guest-name">Tamu Undangan</h2>
+                <div id="input-wrapper" class="input-wrapper">
+                    <input type="text" id="guest-input" placeholder="Tulis nama Anda di sini..." autocomplete="off">
+                </div>
+            </div>
+
+            <button id="btn-open" class="btn-open">
+                <span class="btn-text">Buka Undangan</span>
+                <span class="btn-line"></span>
+            </button>
+            
+            <p class="opening-hint">Mohon maaf apabila ada kesalahan penulisan nama</p>
+        </div>
     </div>
-    <div id="cover" class="cover">
-      <div class="cover-inner">
-        <div class="monogram">MS • N</div>
-        <h1 class="cover-title">Kepada Yth.</h1>
-        <div id="recipient" class="recipient"></div>
-        <div id="recipientInputWrap" class="recipient-input-wrap">
-          <input id="recipientInput" type="text" class="recipient-input" placeholder="Tulis nama penerima">
-        </div>
-        <button id="openBtn" class="btn btn-gold">Buka Undangan</button>
-        <p class="hint">Anda boleh mengubah nama penerima sebelum membuka.</p>
-      </div>
-    </div>
 
-    <main class="page">
-      <section class="hero" data-parallax>
-        <div class="hero-image">
-          <img src="images/mempelai.jpg" alt="Muh Syahril & Natasya" onerror="this.parentElement.style.display='none'">
-          <div class="hero-image-overlay"></div>
-        </div>
-        <div class="hero-content">
-          <h2 class="pretitle">The Wedding of</h2>
-          <h1 class="names gold-shimmer">Muh Syahril <span class="amp">&amp;</span> Natasya</h1>
-          <p class="detail">Selasa, 17 Februari 2026</p>
-          <p class="detail">Pujo Bulcen, Kec. Pitu Riase, Kab. Sidrap</p>
-          <div class="gold-divider"></div>
-        </div>
-      </section>
+    <!-- Main Content -->
+    <main id="main-content" class="main-content">
+        
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-bg">
+                <!-- Placeholder for couple photo, will use CSS gradient if missing -->
+                <img src="images/mempelai.jpg" alt="Couple" class="hero-img" onerror="this.style.display='none'">
+                <div class="hero-overlay"></div>
+            </div>
+            
+            <div class="hero-text-container">
+                <p class="hero-pretitle reveal-text">The Wedding of</p>
+                <h1 class="hero-title">
+                    <span class="name-block reveal-text delay-1">Muh Syahril</span>
+                    <span class="ampersand reveal-text delay-2">&</span>
+                    <span class="name-block reveal-text delay-3">Natasya</span>
+                </h1>
+                <div class="hero-date reveal-text delay-4">
+                    <span class="date-line">Selasa, 17 Februari 2026</span>
+                    <span class="loc-line">Pujo Bulcen, Sidrap</span>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="line"></div>
+            </div>
+        </section>
 
-      <section class="inviter" data-reveal>
-        <h3 class="section-title">Yang Mengundang</h3>
-        <div class="inviter-grid">
-          <figure class="inviter-card">
-            <img src="assets/images/orang-tua.jpg" alt="Harman & Hj. Baba" onerror="this.style.display='none'">
-            <figcaption>Harman &amp; Hj. Baba</figcaption>
-          </figure>
-          <div class="inviter-text">
-            <p>Dengan penuh kebahagiaan mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan putra-putri kami.</p>
-          </div>
-        </div>
-      </section>
+        <!-- Quote / Intro -->
+        <section class="intro-section content-pad">
+            <div class="container small">
+                <div class="ornament-top reveal-up"></div>
+                <p class="bismillah reveal-up">بِسْمِ اللّهِ الرَّحْمَٰن الرَّحِيم</p>
+                <p class="intro-text reveal-up">
+                    Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan putra-putri kami:
+                </p>
+            </div>
+        </section>
 
-      <section class="rsvp" data-reveal>
-        <h3 class="section-title">RSVP & Lokasi</h3>
-        <div class="rsvp-grid">
-          <div class="card">
-            <h4>Waktu</h4>
-            <p>17 Februari 2026</p>
-          </div>
-          <div class="card">
-            <h4>Lokasi</h4>
-            <p>Pujo Bulcen, Kec. Pitu Riase, Kab. Sidrap</p>
-          </div>
-          <div class="card share">
-            <h4>Bagikan</h4>
-            <p id="shareLink">Tautan akan dibuat otomatis</p>
-            <button id="copyLinkBtn" class="btn btn-outline">Salin Tautan</button>
-          </div>
-        </div>
-      </section>
+        <!-- Couple Details -->
+        <section class="couple-section content-pad">
+            <div class="container">
+                <!-- Groom -->
+                <div class="couple-block reveal-up">
+                    <h2 class="couple-name">Muh Syahril</h2>
+                    <p class="couple-parents">Putra dari Bpk. Harman & Ibu Hj. Baba</p>
+                </div>
 
-      <section class="inviter more" data-reveal>
-        <h3 class="section-title">Turut Mengundang</h3>
-        <div class="inviter-grid">
-          <figure class="inviter-card">
-            <img src="images/turut-1.jpg" alt="Turut Mengundang 1" onerror="this.style.display='none'">
-            <figcaption>Keluarga Besar Bancos Family</figcaption>
-          </figure>
-          <figure class="inviter-card">
-            <img src="images/turut-2.jpg" alt="Turut Mengundang 2" onerror="this.style.display='none'">
-            <figcaption>Keluarga Besar Bancos Family</figcaption>
-          </figure>
-          <figure class="inviter-card">
-            <img src="images/turut-3.jpg" alt="Turut Mengundang 3" onerror="this.style.display='none'">
-            <figcaption>Keluarga Besar Bancos Family</figcaption>
-          </figure>
-          <figure class="inviter-card">
-            <img src="images/turut-4.jpg" alt="Turut Mengundang 4" onerror="this.style.display='none'">
-            <figcaption>Keluarga Besar Bancos Family</figcaption>
-          </figure>
-        </div>
-      </section>
+                <div class="couple-divider reveal-up">&</div>
 
-      <section class="endcard" data-reveal>
-        <div class="endcard-inner">
-          <div class="endcard-line gold-shimmer">Yang Mengundang</div>
-          <div class="endcard-line gold-shimmer">Keluarga Besar</div>
-          <div class="endcard-line emph gold-shimmer">Bancos Family</div>
-        </div>
-      </section>
+                <!-- Bride -->
+                <div class="couple-block reveal-up">
+                    <h2 class="couple-name">Natasya</h2>
+                    <p class="couple-parents">Putri dari Bapak & Ibu (Mempelai Wanita)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Timeline -->
+        <section class="event-section content-pad">
+            <div class="container">
+                <h3 class="section-title reveal-up">Rangkaian Acara</h3>
+                
+                <div class="timeline-wrapper">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="event-card reveal-up">
+                        <div class="event-time">09:00 WITA - Selesai</div>
+                        <h4 class="event-name">Akad & Resepsi</h4>
+                        <p class="event-date">Selasa, 17 Februari 2026</p>
+                        <p class="event-loc">Pujo Bulcen, Kec. Pitu Riase<br>Kab. Sidrap</p>
+                        <a href="https://goo.gl/maps/placeholder" target="_blank" class="btn-outline">Lihat Lokasi</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery / Turut Mengundang -->
+        <section class="gallery-section content-pad">
+            <div class="container">
+                <h3 class="section-title reveal-up">Turut Mengundang</h3>
+                <p class="gallery-subtitle reveal-up">Keluarga Besar Bancos Family</p>
+                
+                <div class="masonry-grid">
+                    <!-- Images will auto-hide if error -->
+                    <div class="grid-item reveal-up delay-1">
+                        <img src="images/turut-1.jpg" alt="Family" onerror="this.parentElement.style.display='none'">
+                    </div>
+                    <div class="grid-item reveal-up delay-2">
+                        <img src="images/turut-2.jpg" alt="Family" onerror="this.parentElement.style.display='none'">
+                    </div>
+                    <div class="grid-item reveal-up delay-3">
+                        <img src="images/turut-3.jpg" alt="Family" onerror="this.parentElement.style.display='none'">
+                    </div>
+                    <div class="grid-item reveal-up delay-4">
+                        <img src="images/turut-4.jpg" alt="Family" onerror="this.parentElement.style.display='none'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing -->
+        <section class="closing-section">
+            <div class="closing-bg"></div>
+            <div class="container relative">
+                <p class="closing-text reveal-up">
+                    Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai.
+                </p>
+                <div class="signature reveal-up">
+                    <p>Kami yang berbahagia,</p>
+                    <h3 class="family-name">Keluarga Besar Bancos Family</h3>
+                </div>
+            </div>
+        </section>
+
+        <footer class="main-footer">
+            <p>&copy; 2026 Muh Syahril & Natasya</p>
+        </footer>
+
     </main>
 
-    <div class="sticky-bar">
-      <div class="sticky-inner">
-        <div class="sticky-text">Bagikan undangan</div>
-        <button id="copyLinkBtnSticky" class="btn btn-gold">Salin Tautan</button>
-      </div>
+    <!-- Sticky Bottom Bar -->
+    <div id="sticky-bar" class="sticky-bar">
+        <div class="sticky-content">
+            <span class="sticky-label">Bagikan Momen Ini</span>
+            <button id="btn-copy" class="btn-gold-small">Salin Tautan</button>
+        </div>
     </div>
 
     <script src="js/script.js"></script>
-  </body>
+</body>
 </html>

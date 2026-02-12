@@ -1098,19 +1098,34 @@ h1, h2, h3 { font-weight: 400; }
     /* Opening Section Mobile Adjustments */
     .opening-photo {
         top: 5%; /* Move higher */
-        height: 50%; /* Limit height to avoid overlap */
-        background-position: center bottom; /* Anchor to bottom of the photo area */
+        height: 45%; /* Slightly reduce photo height allocation */
+        background-position: center bottom;
         background-size: contain;
     }
 
     .opening-content {
-        bottom: 15%; /* Move up slightly to ensure visibility on small screens */
-        width: 85%;
-        padding: 1.5rem 1rem;
+        bottom: 10%; /* Lower to balance */
+        width: 80%; /* Reduce width */
+        padding: 1rem; /* Reduce padding */
+        max-width: 320px; /* Limit max width on mobile */
     }
     
     .monogram-name {
-        font-size: 2rem;
+        font-size: 1.8rem; /* Smaller names */
+    }
+    
+    .monogram-box {
+        margin-bottom: 1rem; /* Reduce margin */
+    }
+    
+    .guest-name {
+        font-size: 1.8rem; /* Smaller guest name */
+        margin-bottom: 1.5rem;
+    }
+    
+    .btn-open {
+        margin-top: 1.5rem; /* Closer to input */
+        padding: 0.8rem 2rem; /* Smaller button */
     }
 }
 

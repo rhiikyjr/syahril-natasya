@@ -225,36 +225,71 @@ h1, h2, h3 { font-weight: 400; }
 /* Curtain Animation Restored */
 .curtain {
     position: absolute;
-    top: 0; height: 100%; width: 51%; /* Slight overlap */
+    top: 0; height: 100%; width: 51%;
     background-color: var(--c-emerald-deep);
-    z-index: 1;
+    z-index: 2; /* Curtains on top of photo */
     transition: transform 2.5s var(--ease-out-expo);
-    
-    /* Use NO-BG photo for cleaner look on dark background */
-    background-image: url('../images/mempelai-nobg.png');
-    background-size: auto 65%; /* Reduce size slightly to fit upper area */
-    background-repeat: no-repeat;
-    /* Position image at top center, with some padding from top */
-    background-position: center 10%; 
-    filter: drop-shadow(0 0 20px rgba(0,0,0,0.5)); /* Add shadow for depth */
 }
 
-/* Left Curtain: Shows left half of the centered image */
+.opening-photo {
+    position: absolute;
+    top: 10%; /* Position at top */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 60%; /* Occupy top 60% */
+    background-image: url('../images/mempelai-nobg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    z-index: 1; /* Behind curtains initially, but we want it visible? No, behind content, in front of bg color */
+    /* Actually, if curtains are solid, they hide this. 
+       If user wants photo visible on cover, it must be ABOVE curtains or ON curtains.
+       "fotonya terbagi 2" means the split curtain approach failed visually.
+       
+       Solution: 
+       1. Place photo centered in a container.
+       2. Curtains are just solid blocks that slide away.
+       3. BUT wait, if curtains slide away, they reveal the main content.
+       4. The User wants the photo ON THE COVER.
+       
+       Let's try: Photo is part of the opening layer, independent of curtains.
+       When opening, curtains slide out. Photo fades out?
+       Or photo is ON the curtains but not split? No, can't be on two moving divs without splitting.
+       
+       Revised Approach:
+       Photo is a single element centered on screen.
+       Curtains are BEHIND the photo? No, curtains hide the main site.
+       
+       If photo is on cover, it must be visible.
+       If curtains open, they usually reveal what's behind.
+       
+       Maybe the user means: The photo should not be split by the curtain line.
+       It should be a single cohesive image.
+       
+       If I put the photo in a div z-index 10 (above curtains), it won't move with curtains.
+       It will just sit there. Then we can fade it out.
+    */
+    z-index: 3; /* Above curtains */
+    transition: opacity 1s ease 0.5s; /* Fade out when opening */
+    filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+}
+
+.opening-layer.is-open .opening-photo {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Left Curtain: Solid Color */
 .curtain-left { 
     left: 0; 
     border-right: 1px solid rgba(212, 175, 55, 0.3); 
-    /* Shift background to align as one image */
-    background-position: right 10%; 
-    background-size: 200% 65%; /* Double width because it's half screen */
 }
 
-/* Right Curtain: Shows right half of the centered image */
+/* Right Curtain: Solid Color */
 .curtain-right { 
     right: 0; 
     border-left: 1px solid rgba(212, 175, 55, 0.3); 
-    /* Shift background to align as one image */
-    background-position: left 10%;
-    background-size: 200% 65%;
 }
 
 /* Open State */
@@ -262,12 +297,12 @@ h1, h2, h3 { font-weight: 400; }
 .opening-layer.is-open .curtain-right { transform: translateX(100%); }
 
 .opening-content {
-    position: absolute; /* Changed to absolute for precise positioning */
-    bottom: 10%; /* Position at bottom area */
-    top: auto; /* Clear top positioning */
+    position: absolute; 
+    bottom: 10%; 
+    top: auto; 
     left: 50%;
     transform: translateX(-50%);
-    z-index: 10;
+    z-index: 10; /* Above photo */
     text-align: center;
     padding: 1.5rem;
     opacity: 1;
@@ -276,25 +311,11 @@ h1, h2, h3 { font-weight: 400; }
     max-width: 400px;
     
     /* Glassmorphism */
-    background: rgba(5, 31, 24, 0.6); /* More opaque for contrast against dark bottom */
+    background: rgba(5, 31, 24, 0.6);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 16px;
-    box-shadow: 0 -10px 40px rgba(0,0,0,0.3); /* Shadow upwards */
-}
-
-/* Ensure mobile layout is balanced */
-@media (max-width: 768px) {
-    .curtain, .curtain-left, .curtain-right {
-        background-size: auto 50%; /* Smaller image on mobile */
-        background-position: center 15%; /* Keep at top */
-    }
-    .curtain-left { background-position: right 15%; background-size: 200% 50%; }
-    .curtain-right { background-position: left 15%; background-size: 200% 50%; }
-    
-    .opening-content {
-        bottom: 5%; /* Lower on mobile */
-    }
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.3);
 }
 
 .opening-layer.is-open .opening-content {

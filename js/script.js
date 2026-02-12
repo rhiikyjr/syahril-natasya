@@ -6,6 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const guestInput = document.getElementById('guest-input');
     const inputWrapper = document.getElementById('input-wrapper');
     const btnCopy = document.getElementById('btn-copy');
+    
+    // Music Elements
+    const bgMusic = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('music-control');
+    const iconMusic = document.getElementById('icon-music');
+    let isPlaying = false;
 
     // --- 1. Recipient Logic ---
     const params = new URLSearchParams(window.location.search);
@@ -23,6 +29,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Music Functions ---
+    const toggleMusic = () => {
+        if (isPlaying) {
+            bgMusic.pause();
+            isPlaying = false;
+            iconMusic.innerHTML = '<path d="M5 3l14 9-14 9V3z"/>'; // Play Icon
+            musicBtn.classList.remove('music-spin');
+        } else {
+            bgMusic.play().then(() => {
+                isPlaying = true;
+                iconMusic.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>'; // Pause Icon
+                musicBtn.classList.add('music-spin');
+            }).catch(err => {
+                console.log("Audio play failed:", err);
+                isPlaying = false;
+            });
+        }
+    };
+
+    musicBtn.addEventListener('click', toggleMusic);
+
     // --- 2. Opening Sequence ---
     btnOpen.addEventListener('click', () => {
         // 1. Trigger Curtain Animation
@@ -31,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // 2. Unlock Scroll
         document.body.style.overflowY = 'auto';
 
-        // 3. Play Music (Optional - Placeholder)
-        // playAudio(); 
+        // 3. Play Music
+        toggleMusic();
     });
 
     // Lock scroll initially

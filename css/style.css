@@ -601,6 +601,7 @@ h1, h2, h3 { font-weight: 400; }
     /* Enhanced texture for Couple Section */
     background-color: var(--c-emerald-dark);
     background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23D4AF37' fill-opacity='0.1'/%3E%3C/svg%3E");
+    padding: 3rem 1.5rem; /* Reduced padding */
 }
 
 .couple-name {
@@ -619,7 +620,12 @@ h1, h2, h3 { font-weight: 400; }
     font-family: var(--f-script);
     font-size: 3rem;
     color: var(--c-gold-light);
-    margin: 2rem 0;
+    margin: 1rem 0; /* Reduced margin */
+}
+
+/* Ensure empty photo wrapper collapses */
+.couple-photo-wrapper:empty {
+    display: none;
 }
 
 /* --- Inviter Section (Harman & Hj Baba) --- */

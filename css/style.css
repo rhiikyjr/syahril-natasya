@@ -216,13 +216,37 @@ h1, h2, h3 { font-weight: 400; }
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    /* Add background image support */
+    background-color: var(--c-emerald-deep);
+}
+
+.opening-cover-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0; /* Behind content but in front of background color */
+    opacity: 0.3; /* Dimmed to keep text readable */
+    transition: opacity 1s ease;
+}
+
+.cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    filter: grayscale(100%) contrast(1.2); /* Cinematic B&W */
+}
+
+.cover-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, var(--c-emerald-deep) 0%, rgba(5,31,24,0.6) 50%, var(--c-emerald-deep) 100%);
 }
 
 .curtain {
     position: absolute;
     top: 0; height: 100%; width: 51%;
     background-color: var(--c-emerald-deep);
-    z-index: 1;
+    z-index: 2; /* Increased z-index to cover image */
     transition: transform 2.5s var(--ease-out-expo);
 }
 
@@ -231,6 +255,7 @@ h1, h2, h3 { font-weight: 400; }
 
 .opening-layer.is-open .curtain-left { transform: translateX(-100%); }
 .opening-layer.is-open .curtain-right { transform: translateX(100%); }
+.opening-layer.is-open .opening-cover-bg { opacity: 0; transition-delay: 0.5s; }
 
 .opening-content {
     position: relative;
@@ -241,6 +266,12 @@ h1, h2, h3 { font-weight: 400; }
     transition: opacity 1s ease;
     width: 100%;
     max-width: 500px;
+    /* Add backdrop for better text readability over image */
+    background: rgba(5, 31, 24, 0.6);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 }
 
 .opening-layer.is-open {

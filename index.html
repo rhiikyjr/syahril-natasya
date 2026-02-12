@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Gold Border Frame -->
+    <div class="fixed-frame">
+        <div class="frame-border"></div>
+    </div>
+
     <!-- Ambient Background -->
     <div class="noise-overlay"></div>
     <div class="ambient-light"></div>
@@ -54,9 +59,14 @@
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="hero-bg">
-                <!-- Placeholder for couple photo, will use CSS gradient if missing -->
-                <img src="images/mempelai.jpg" alt="Couple" class="hero-img" onerror="this.style.display='none'">
+                <!-- Background Photo (Layer 1) -->
+                <img src="images/mempelai-bg.jpg" alt="Background" class="hero-img-bg" onerror="this.style.opacity='0'">
                 <div class="hero-overlay"></div>
+            </div>
+
+            <div class="hero-fg">
+                <!-- No-Background Photo (Layer 2) -->
+                 <img src="images/mempelai-nobg.png" alt="Couple" class="hero-img-nobg" onerror="this.style.display='none'">
             </div>
             
             <div class="hero-text-container">
@@ -104,6 +114,31 @@
                 <div class="couple-block reveal-up">
                     <h2 class="couple-name">Natasya</h2>
                     <p class="couple-parents">Putri dari Bapak & Ibu (Mempelai Wanita)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Yang Mengundang Section (Harman & Hj Baba) -->
+        <section class="inviter-section content-pad">
+            <div class="inviter-bg">
+                <!-- Background Photo for Parents -->
+                <img src="images/parents-bg.jpg" alt="Parents Background" class="inviter-img-bg" onerror="this.style.display='none'">
+                <div class="inviter-overlay"></div>
+            </div>
+            
+            <div class="container relative z-10">
+                <h3 class="section-title reveal-up">Yang Mengundang</h3>
+                
+                <div class="inviter-content">
+                    <div class="inviter-photo-wrapper reveal-up">
+                        <!-- No-Background Photo for Parents -->
+                         <img src="images/parents-nobg.png" alt="Harman & Hj Baba" class="inviter-img-nobg" onerror="this.style.display='none'">
+                    </div>
+                    
+                    <div class="inviter-names reveal-up delay-2">
+                        <h2 class="parents-main-name">Harman & Hj. Baba</h2>
+                        <p class="parents-role">Keluarga Mempelai Pria</p>
+                    </div>
                 </div>
             </div>
         </section>

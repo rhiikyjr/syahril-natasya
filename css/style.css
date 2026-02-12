@@ -32,6 +32,43 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* --- Fixed Gold Border Frame --- */
+.fixed-frame {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999; /* High z-index but below opening layer if needed */
+    padding: 10px;
+}
+
+.frame-border {
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--c-gold);
+    border-radius: 0; /* Or adjust for rounded corners */
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.frame-border::before, .frame-border::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--c-gold);
+    transition: all 0.5s ease;
+}
+
+.frame-border::before {
+    top: -2px; left: -2px;
+    border-right: none; border-bottom: none;
+}
+
+.frame-border::after {
+    bottom: -2px; right: -2px;
+    border-left: none; border-top: none;
+}
+
 /* --- Ambient Effects --- */
 .noise-overlay {
     position: fixed;
@@ -198,11 +235,34 @@ h1, h2, h3 { font-weight: 400; }
     z-index: -1;
 }
 
-.hero-img {
+.hero-img-bg {
     width: 100%;
     height: 100%;
     object-fit: cover;
     animation: kenBurns 20s infinite alternate;
+}
+
+.hero-fg {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    height: 80%; /* Adjust as needed */
+    pointer-events: none;
+}
+
+.hero-img-nobg {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 @keyframes kenBurns {
@@ -295,6 +355,8 @@ h1, h2, h3 { font-weight: 400; }
     margin: 0 auto;
     text-align: center;
 }
+.container.relative { position: relative; }
+.container.z-10 { position: relative; z-index: 10; }
 
 .container.small { max-width: 600px; }
 
@@ -333,6 +395,65 @@ h1, h2, h3 { font-weight: 400; }
     font-size: 3rem;
     color: var(--c-gold-light);
     margin: 2rem 0;
+}
+
+/* --- Inviter Section (Harman & Hj Baba) --- */
+.inviter-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.inviter-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.inviter-img-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4; /* Dimmed background */
+}
+
+.inviter-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, var(--c-emerald-dark), transparent 50%, var(--c-emerald-dark));
+}
+
+.inviter-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.inviter-photo-wrapper {
+    width: 250px;
+    height: 350px;
+    position: relative;
+}
+
+.inviter-img-nobg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.4));
+}
+
+.parents-main-name {
+    font-family: var(--f-display);
+    font-size: 3rem;
+    color: var(--c-gold);
+    margin-bottom: 0.5rem;
+}
+
+.parents-role {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--c-white-dim);
 }
 
 /* --- Events --- */

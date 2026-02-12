@@ -343,6 +343,7 @@ h1, h2, h3 { font-weight: 400; }
     padding: 2rem;
     position: relative;
     z-index: 2;
+    margin-bottom: 4rem; /* Add spacing to avoid overlap with image */
 }
 
 .hero-pretitle {
@@ -352,6 +353,7 @@ h1, h2, h3 { font-weight: 400; }
     font-size: 0.9rem;
     margin-bottom: 1rem;
     color: var(--c-white-dim);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Better readability */
 }
 
 .hero-title {
@@ -361,6 +363,7 @@ h1, h2, h3 { font-weight: 400; }
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Better readability */
 }
 
 .name-block {
@@ -504,13 +507,15 @@ h1, h2, h3 { font-weight: 400; }
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 3rem; /* Increase gap */
+    padding-top: 2rem;
 }
 
 .inviter-photo-wrapper {
     width: 250px;
     height: 350px;
     position: relative;
+    margin-bottom: 1rem;
 }
 
 .inviter-img-nobg {
